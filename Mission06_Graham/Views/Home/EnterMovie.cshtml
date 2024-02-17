@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Enter Movie";
+}
+
+@model Mission06_Graham.Models.EnterMovie
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" class="form-control" />
+        <span asp-validation-for="Director" class="text-danger"></span>
+
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating" class="form-control">
+            <option value="">Select a rating</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
+
+        <label asp-for="Edited">Edited:</label>
+        <select asp-for="Edited" class="form-control">
+            <option value="">Select option</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" class="form-control" />
+
+        <label asp-for="Notes">Notes:</label>
+        <input asp-for="Notes" class="form-control" />
+    </div>
+
+    <input type="submit" value="Add Movie" class="btn btn-primary" />
+</form>
