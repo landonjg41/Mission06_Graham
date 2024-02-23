@@ -1,28 +1,36 @@
 ﻿@{
-    ViewData["Title"] = "Enter Movie";
+    ViewData["Title"] = "Enter Movie"; // Set page title
 }
 
-@model Mission06_Graham.Models.EnterMovie
+@model Mission06_Graham.Models.EnterMovie // Specify the model for this view
 
 <form method="post">
-    <div class="form-group">
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" class="form-control" />
-        <span asp-validation-for="Category" class="text-danger"></span>
+@*     // Form for movie data entry
+ *@    <div class="form-group">
+        <input type="hidden" asp-for="MovieId" /> @* // Hidden field for MovieId *@
 
-        <label asp-for="Title">Title:</label>
+        <label asp-for="CategoryId">Category:</label> @* // Dropdown for category selection *@
+        <select asp-for="CategoryId" class="form-control">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories) // Populate categories from ViewBag
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span> @* // Validation message for CategoryId *@
+
+        <label asp-for="Title">Title:</label> @* // Input for title *@
         <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+        <span asp-validation-for="Title" class="text-danger"></span> @* // Validation message for Title *@
 
-        <label asp-for="Year">Year:</label>
+        <label asp-for="Year">Year:</label> @* // Input for year *@
         <input asp-for="Year" class="form-control" />
-        <span asp-validation-for="Year" class="text-danger"></span>
+        <span asp-validation-for="Year" class="text-danger"></span> @* // Validation message for Year *@
 
-        <label asp-for="Director">Director:</label>
+        <label asp-for="Director">Director:</label> @* // Input for director *@
         <input asp-for="Director" class="form-control" />
-        <span asp-validation-for="Director" class="text-danger"></span>
 
-        <label asp-for="Rating">Rating:</label>
+        <label asp-for="Rating">Rating:</label> @* // Dropdown for rating selection *@
         <select asp-for="Rating" class="form-control">
             <option value="">Select a rating</option>
             <option value="G">G</option>
@@ -30,21 +38,29 @@
             <option value="PG-13">PG-13</option>
             <option value="R">R</option>
         </select>
-        <span asp-validation-for="Rating" class="text-danger"></span>
 
-        <label asp-for="Edited">Edited:</label>
+        <label asp-for="Edited">Edited:</label> @* // Dropdown for edited status *@
         <select asp-for="Edited" class="form-control">
             <option value="">Select option</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
-
-        <label asp-for="LentTo">Lent To:</label>
+        <span asp-validation-for="Edited" class="text-danger"></span> @* // Validation message for Edited
+ *@
+        <label asp-for="LentTo">Lent To:</label> @* // Input for lent to *@
         <input asp-for="LentTo" class="form-control" />
 
-        <label asp-for="Notes">Notes:</label>
+        <label asp-for="CopiedToPlex">CopiedToPlex:</label> @* // Dropdown for CopiedToPlex status *@
+        <select asp-for="CopiedToPlex" class="form-control">
+            <option value="">Select option</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <span asp-validation-for="CopiedToPlex" class="text-danger"></span> @* // Validation message for CopiedToPlex *@
+
+        <label asp-for="Notes">Notes:</label> @* // Input for notes *@
         <input asp-for="Notes" class="form-control" />
     </div>
 
-    <input type="submit" value="Add Movie" class="btn btn-primary" />
+    <input type="submit" value="Add Movie" class="btn btn-primary" /> @* // Submit button *@
 </form>

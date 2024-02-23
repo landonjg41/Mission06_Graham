@@ -1,0 +1,47 @@
+﻿@* Information link for MVC setup *@
+@{
+}
+
+@model List<EnterMovie> // Define the model for this view
+
+<table class="table table-bordered">
+    @* // Create a table for displaying movies *@
+    <thead class="fw-bold">
+@*         // Table header with bold font weight
+ *@        <tr>
+@*             // Table row for header titles
+ *@            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>LentTo</td>
+            <td>CopiedToPlex</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+
+    @foreach (var x in Model) // Iterate over each movie in the model
+    {
+        <tbody>
+@*             // Table body to hold movie details
+ *@            <tr>
+@*                 // Table row for each movie
+ *@                <td>@x.Category?.CategoryName</td> @* // Display category name *@
+                <td>@x.Title</td> @* // Display movie title *@
+                <td>@x.Year</td> @* // Display year of release *@
+                <td>@x.Director</td> @* // Display director's name *@
+                <td>@x.Rating</td> @* // Display movie rating *@
+                <td>@x.Edited</td> @* // Display edited status *@
+                <td>@x.LentTo</td> @* // Display who the movie was lent to *@
+                <td>@x.CopiedToPlex</td> @* // Display CopiedToPlex status *@
+                <td>@x.Notes</td> @* // Display any notes *@
+
+@*                 // Edit and Delete buttons with links to their respective actions
+ *@                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
+            </tr>
+        </tbody>
+    }
+</table>

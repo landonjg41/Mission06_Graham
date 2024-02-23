@@ -1,33 +1,36 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Graham.Models
 {
-    //model containing various required/non-required elements
-    //also contains built-in error protection
-    public class EnterMovie
+    public class EnterMovie // Movie entry model
     {
-        [Required(ErrorMessage = "Category is required.")]
-        public string Category { get; set; }
+        [Key] // Primary key
+        [Required] // Required field
+        public int MovieId { get; set; } // Movie ID
 
-        [Key]
-        [Required(ErrorMessage = "Title is required.")]
-        public string Title { get; set; }
+        [ForeignKey("CategoryId")] // Category foreign key
+        public int? CategoryId { get; set; } // Nullable category ID
+        public Category? Category { get; set; } // Navigation property for category
 
-        [Required(ErrorMessage = "Year is required.")]
-        public string Year { get; set; }
+        [Required(ErrorMessage = "Title is required.")] // Title is required
+        public string Title { get; set; } // Movie title
 
-        [Required(ErrorMessage = "Director is required.")]
-        public string Director { get; set; }
+        [Range(1888, 2024, ErrorMessage = "Year is required.")] // Year validation
+        public int Year { get; set; } // Release year
+        public string? Director { get; set; } // Optional director
+        public string? Rating { get; set; } // Optional rating
 
-        [Required(ErrorMessage = "Rating is required.")]
-        public string Rating { get; set; }
+        [Required(ErrorMessage = "Edited is required.")] // Edited status is required
+        public bool? Edited { get; set; } // Nullable edited status
 
-        public bool? Edited { get; set; }
+        public string? LentTo { get; set; } // Optional lent to
 
-        public string? LentTo { get; set; }
+        [Required(ErrorMessage = "CopiedToPlex is required.")] // CopiedToPlex status is required
+        public bool? CopiedToPlex { get; set; } // Nullable CopiedToPlex status
 
-        [StringLength(25)]
-        public string? Notes { get; set; }
+        [StringLength(25)] // Notes length constraint
+        public string? Notes { get; set; } // Optional notes
     }
 }

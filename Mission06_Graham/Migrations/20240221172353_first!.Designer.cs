@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission06_Graham.Models;
 
@@ -10,9 +11,11 @@ using Mission06_Graham.Models;
 namespace Mission06_Graham.Migrations
 {
     [DbContext(typeof(EnterMovieContext))]
-    partial class EnterMovieContextModelSnapshot : ModelSnapshot
+    [Migration("20240221172353_first!")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
